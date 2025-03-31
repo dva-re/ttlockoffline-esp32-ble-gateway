@@ -34,3 +34,4 @@
 .pio
 .vscode
 src/config.cpp
+.DS_Store

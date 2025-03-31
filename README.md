@@ -23,14 +23,14 @@ This short guide explains how to install the gateway and configure the [TTLock H
 
 1. [Visual Studio Code (VSCode)](https://code.visualstudio.com/) and [PlatformIO](https://platformio.org/) extension.  
 2. A clone of this repository  
-3. A working **ESP32-WROVER board**  
+3. A working **ESP32-WROVER board**  or **ESP32-WROOM board**
 4. Some type of TTLock lock paired to a working Home Assistant installation with [TTLock Home Assistant addon](https://github.com/kind3r/hass-addons)
 
 ### Preparing the ESP32
 
 Open the cloned repo in VSCode and PlatformIO should automatically install all the required dependencies (it will take a couple of minutes, depending on your computer and internet speed, be patient and let it *settle*). You need to modify `sdkconfig.h` located in `.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config` and change `CONFIG_ARDUINO_LOOP_STACK_SIZE` to `10240`. This is because the HTTPS certificate generation takes more stack space.
 
-> At the moment, the project is only configured to work on **ESP32-WROVER boards**. If you have a different board, you need to edit the `platformio.ini` file and create your own env configuration. As of this writing the code takes about 1.5Mb so I'm using the `min_spiffs.csv` partition scheme in order to be able to hopefully do OTA in the future.
+> At the moment, the project is only configured to work on **ESP32-WROVER/WROOM boards**. If you have a different board, you need to edit the `platformio.ini` file and create your own env configuration. As of this writing the code takes about 1.5Mb so I'm using the `min_spiffs.csv` partition scheme in order to be able to hopefully do OTA in the future.
 
 Connect your ESP32 to the PC, go to PlatformIO menu (the alien head on the VSCode's left toolbar, where you have files, search, plugins etc.) then in **Project Tasks** choose **env:esp-wrover** -> **Platform** -> **Upload Filesystem Imager**. This will 'format' the storage and upload the web UI.  
 
